@@ -3,8 +3,8 @@ title: Jekyll GitBook Theme Demo Site
 email: adam@adamrehn.com
 description: Demo site for the GitBook-inspired documentation theme for Jekyll
 url: "https://adamrehn.github.io"
-baseurl: "/jekyll-theme-gitbook-demo"
-timezone: Australia/Brisbane
+baseurl: "/"
+timezone: America/Los_Angeles
 
 # Build settings
 remote_theme: ICAXIS-2024/documentation

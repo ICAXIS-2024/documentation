@@ -2,15 +2,16 @@
 title: Jekyll GitBook Theme Demo Site
 email: adam@adamrehn.com
 description: Demo site for the GitBook-inspired documentation theme for Jekyll
-url:              'https://icaxis-2024.github.io'
+url: 'https://icaxis-2024.github.io'
 baseurl: ""
 timezone: America/Los_Angeles
-rss:              RSS
+rss: RSS
 
 # bootstrap: use the remote theme for the site itself
-remote_theme: ICAXIS-2024/documentation
-# Build settings
+# remote_theme: ICAXIS-2024/documentation
 remote_theme: adamrehn/jekyll-theme-gitbook@v0.0.1
+
+
 markdown: kramdown
 kramdown:
   input: GFM

@@ -1,5 +1,12 @@
 <div class="book-summary">
     <script type="text/javascript">
+        // Add click event to toggle submenus
+        $(document).ready(function() {
+            $('.chapter').click(function() {
+                $(this).find('> ul').toggleClass('collapsed');
+            });
+        });
+
         // Fixes the page links scroll problem on both desktop and mobile browsers
         function pageScrollToTop(element) {
             // both mobile and non-mobile
@@ -27,64 +34,56 @@
         </div>
         <ul class="summary">
             {% if page.url == "/index.html" or page.url == "/" %}
-            <li class="chapter active" data-level="1.1" data-path="{{ site.baseurl }}">
+            <li class="chapter active" data-level="1.1" data-path="{{site.baseurl}}">
             {% else %}
-            <li class="chapter" data-level="1.1" data-path="{{ site.baseurl }}">
+            <li class="chapter" data-level="1.1" data-path="{{site.baseurl}}">
             {% endif %}
-                <a href="{{ site.baseurl }}/" onclick="pageScrollToTop(this)">
+                <a href="{{site.baseurl}}/" onclick="pageScrollToTop(this)">
                     {{ site.title | escape }}
                 </a>
             </li>
-    
+
             <li class="divider"></li>
-    
+
             {% for collection in site.collections %}
+                <!-- <p>{{ collection.label }}</p> -->
                 {% if collection.output %}
                     {% if collection.label == "posts" %}
                         {% assign reversed_posts = site[collection.label] | reverse %}
                     {% else %}
                         {% assign reversed_posts = site[collection.label] %}
                     {% endif %}
-    
-                    {% for post in reversed_posts %}
-                        {% if page.url == post.url %}
-                        <li class="chapter active" data-level="1.2" data-path="{{ site.baseurl }}{{ post.url }}">
-                        {% else %}
-                        <li class="chapter" data-level="1.1" data-path="{{ site.baseurl }}{{ post.url }}">
-                        {% endif %}
-                            <a href="{{ site.baseurl }}{{ post.url }}" onclick="pageScrollToTop(this)">
-                                {{ post.title | escape }}
-                            </a>
-                            {% if site.toc.enabled %}
+
+                    <li class="chapter" data-level="1.1" data-path="{{site.baseurl}}">
+                        <a href="#" onclick="pageScrollToTop(this)">
+                            {{ collection.label }}
+                        </a>
+                        <ul class="sub-menu collapsed">
+                            {% for post in reversed_posts %}
                                 {% if page.url == post.url %}
-                                    {% include toc.html html=content h_min=site.toc.h_min h_max=site.toc.h_max %}
+                                <li class="chapter active" data-level="1.2" data-path="{{site.baseurl}}{{post.url}}">
+                                {% else %}
+                                <li class="chapter" data-level="1.1" data-path="{{site.baseurl}}{{post.url}}">
                                 {% endif %}
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-    
+                                    <a href="{{site.baseurl}}{{post.url}}" onclick="pageScrollToTop(this)">
+                                        {{ post.title | escape }}
+                                    </a>
+                                    {% if site.toc.enabled %}
+                                        {% if page.url == post.url %}
+                                            {% include toc.html html=content h_min=site.toc.h_min h_max=site.toc.h_max %}
+                                        {% endif %}
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
                     {% if reversed_posts.size > 0 %}
                         <li class="divider"></li>
                     {% endif %}
                 {% endif %}
             {% endfor %}
-    
-            <!-- Add code to generate subpages based on folders -->
-            {% for folder in site.static_files %}
-                {% if folder.path contains "/" %}
-                    {% assign folder_parts = folder.path | split: "/" %}
-                    {% assign folder_name = folder_parts[0] %}
-                    {% assign folder_url = folder_name | append: "/" %}
-                    {% if folder_name != "_site" %}
-                        <li class="chapter" data-level="1.1" data-path="{{ site.baseurl }}/{{ folder_url }}">
-                            <a href="{{ site.baseurl }}/{{ folder_url }}" onclick="pageScrollToTop(this)">
-                                {{ folder_name | escape }}
-                            </a>
-                        </li>
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-    
+
             <li>
                 <a href="#" target="blank" class="gitbook-link">
                     Main Site!

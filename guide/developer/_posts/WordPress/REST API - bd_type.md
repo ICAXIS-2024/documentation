@@ -1,3 +1,11 @@
+---
+title: WordPress REST API
+author: Tao He
+date: 2019-04-27
+category: Jekyll
+layout: post
+---
+
 WordPress REST API - bd_type Taxonomy Endpoints
 
 1. List Types

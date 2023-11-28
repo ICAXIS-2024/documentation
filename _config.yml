@@ -2,7 +2,7 @@
 title:            Documentation
 longtitle:        ICAXIS
 author:           HE Tao
-email:            sighingnow@gmail.com
+email:            icaxis@gmail.com
 description: >
   Build Jekyll site with the GitBook style.
 
@@ -14,7 +14,7 @@ baseurl:          '/documentation'
 rss:              RSS
 
 # bootstrap: use the remote theme for the site itself
-remote_theme: sighingnow/jekyll-gitbook
+remote_theme: ICAXIS-2024/documentation
 
 toc:
   enabled: true

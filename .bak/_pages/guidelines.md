@@ -1,8 +1,8 @@
 ---
-title: Troubleshoot
+title: Guidelines
 author: FredFarah
-date: 2023-11-30
-category: troubleshoot
+date: 2023-11-28
+category: Guidelines
 layout: post
 ---
 

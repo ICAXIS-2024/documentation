@@ -1,66 +1,68 @@
-# Configurations
-title:            Documentation
-longtitle:        ICAXIS
-author:           HE Tao
-email:            icaxis@gmail.com
-description: >
-  Build Jekyll site with the GitBook style.
+# Site settings
+title: Jekyll GitBook Theme Demo Site
+email: adam@adamrehn.com
+description: Demo site for the GitBook-inspired documentation theme for Jekyll
+url: "https://adamrehn.github.io"
+baseurl: "/jekyll-theme-gitbook-demo"
+timezone: Australia/Brisbane
 
-version:          1.0
-gitbook_version:  3.2.3
-
-url:              'https://icaxis-2024.github.io'
-baseurl:          '/documentation'
-rss:              RSS
-
-# bootstrap: use the remote theme for the site itself
+# Build settings
 remote_theme: ICAXIS-2024/documentation
-
-toc:
-  enabled: true
-  h_min: 1
-  h_max: 3
-
-# customize the link favicon in header, will be {{site.baseurl}}/{{site.favicon_path}}
-favicon_path:     /assets/gitbook/images/favicon.ico
-
-# markdown render engine.
-markdown:         kramdown
+markdown: kramdown
 kramdown:
-  auto_ids:               true
-  input:                  GFM
-  math_engine:            mathjax
-  smart_quotes:           lsquo,rsquo,ldquo,rdquo
-  toc_levels:             1..6
-  syntax_highlighter:     rouge
-  syntax_highlighter_opts:
-    guess_lang:           true
+  input: GFM
+exclude: [".gitignore", "LICENSE", "README.md"]
+sass:
+  style: compressed
 
-syntax_highlighter_style: colorful
+# Only needed for local development, will be enabled automatically by GitHub Pages
+plugins: ["jekyll-remote-theme"]
 
-markdown_ext:             markdown,mkdown,mkdn,mkd,md
+# Theme settings
+theme-settings:
+  
+  # Copyright settings
+  copyright:
+    author: Adam Rehn
+    license: "Licensed under the MIT License, see the file [LICENSE](https://github.com/adamrehn/jekyll-theme-gitbook-demo/blob/master/LICENSE) for details."
+    year: 2020
+  
+  # The collection that contains our chapters
+  collection: chapters
+  
+  # Enable generation of links for chapter index pages
+  indices: true
 
-# Permalinks
-permalink:                /:categories/:title:output_ext
-
-# Disqus comments
-# disqushandler:            sighingnow
-
-exclude:
-  - _drafts
-
+# Configure the permalinks for each chapter
+collections_dir: _collections
 collections:
-  pages:
+  chapters:
     output: true
-    permalink: /:collection/:path/
+    permalink: /:path
 
-page_width: 800px
-
-destination:      ./_site
-incremental:      false
-regenerate:       true
-
-plugins:
-  - jekyll-feed
-  - jekyll-readme-index
-  - jemoji
+# Use front matter defaults to supply the metadata for each chapter
+defaults:
+  -
+    scope:
+      path: ""
+      type: "chapters"
+    values:
+      layout: "default"
+  -
+    scope:
+      path: "_collections/_chapters/first-chapter"
+    values:
+      chapter: "First Chapter"
+      chapnum: 1
+  -
+    scope:
+      path: "_collections/_chapters/second-chapter"
+    values:
+      chapter: "Second Chapter"
+      chapnum: 2
+  -
+    scope:
+      path: "_collections/_chapters/third-chapter"
+    values:
+      chapter: "Third Chapter"
+      chapnum: 3

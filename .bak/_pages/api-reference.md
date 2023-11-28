@@ -1,9 +1,9 @@
 ---
-title: Introduction Load
+title: API Reference
 author: FredFarah
 date: 2023-11-28
-category: start
-layout: home
+category: API
+layout: post
 ---
 
 This is an contact page.

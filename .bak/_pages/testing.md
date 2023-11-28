@@ -1,8 +1,8 @@
 ---
-title: Guidelines
+title: Testing
 author: FredFarah
-date: 2023-11-29
-category: Guidelines
+date: 2023-11-28
+category: test
 layout: post
 ---
 

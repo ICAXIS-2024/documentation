@@ -1,7 +1,7 @@
 ---
 title: Architecture
 author: FredFarah
-date: 2023-11-28
+date: 2023-11-29
 category: Architecture
 layout: post
 ---

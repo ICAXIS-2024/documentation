@@ -1,39 +1,58 @@
 <nav class="collapse">
 	<div class="inner">
-	{% include hooks/navbar-prehook.html %}
-	
-	{% assign documents = site.documents | where: "collection", site.theme-settings.collection | where_exp: "page", "page.chapnum != null" %}
-	{% if page.subsite %}
-		{% assign documents = documents | where: "subsite", page.subsite %}
-	{% endif %}
-	{% assign pages = documents | where_exp: "page", "page.pagenum != null" | sort: "pagenum" %}
-	{% assign indices = documents | where_exp: "page", "page.pagenum == null" | sort: "chapnum" %}
-	
-	{% assign chapter_element = "p" %}
-	{% if site.theme-settings.navigation.collapsible == true %}
-		{% assign chapter_element = "summary" %}
-	{% endif %}
-	
-	{% for index in indices %}
-		
-		{% if site.theme-settings.navigation.collapsible == true %}<details{% if site.theme-settings.navigation.collapsed != true or page.chapter == index.chapter %} open="true"{% endif %}>{% endif %}
-		
-		<{{ chapter_element }} class="chapter">{% if index.icon %}{% assign components = index.url | split: "/" %}<span class="icon icon-{{ components[-2] | escape }} {{ index.icon | escape }}"></span> {% endif %}{{ index.chapter | escape }}</{{ chapter_element }}>
-		
-		<ul>
-		{% if site.theme-settings.navigation.indices == true and index.layout == "chapter-index" %}
-			<li{% if index.url == page.url %} class="selected"{% endif %}><a href="{{ index.url | replace: "/index", "" | relative_url | uri_escape }}">Index</a></li>
+		{% include hooks/navbar-prehook.html %}
+		{% if site.theme-settings.navigation.tabs %}
+			<div class="tab-content" id="nav-tab-content">
+				{% for tabs in site.theme-settings.navigation.tabs %}
+				<div class="tab-pane fade{% if forloop.first %} show active{% endif %}" id="tab-{{tabs.slug}}" role="tabpanel" aria-labelledby="nav-{{tabs.slug}}-tab">
+
+					{% for collection in site.collections %}
+
+
+						{% assign documents = site.documents | where: "collection", collection.label | where_exp: "page", "page.secnum != null" %}
+						{% if page.subsite %}
+							{% assign documents = documents | where: "subsite", page.subsite %}
+						{% endif %}
+						{% assign pages = documents | where_exp: "page", "page.pagenum != null" | sort: "pagenum" %}
+						{% assign indices = documents | where_exp: "page", "page.pagenum == null" | sort: "secnum" %}
+						
+						{% assign html_element = "p" %}
+						{% if site.theme-settings.navigation.collapsible == true %}
+							{% assign html_element = "summary" %}
+						{% endif %}
+
+						
+						<div class="section-collection collection-{{collection.label}}" id=collection-{{tabs.slug}}-{{collection.label}} style="display: none;">
+							{% for index in indices %}
+								{% if index.tab == {{tabs.slug}} %}			
+									{% if site.theme-settings.navigation.collapsible == true %}<details{% if site.theme-settings.navigation.collapsed != true or page.section == index.section %} open="true"{% endif %}>{% endif %}
+									
+									<{{ html_element }} class="chapter">{% if index.icon %}{% assign components = index.url | split: "/" %}<span class="icon icon-{{ components[-2] | escape }} {{ index.icon | escape }}"></span> {% endif %}{{ index.section | escape }}</{{ html_element }}>
+									
+									<ul>
+									{% if site.theme-settings.navigation.indices == true and index.layout == "chapter-index" %}
+										<li{% if index.url == page.url %} class="selected"{% endif %}>
+											<a href="{{ index.url | replace: "/index", "" | relative_url | uri_escape }}">Index</a>
+										</li>
+									{% endif %}
+									{% assign section_pages = pages | where: "section", index.section %}
+									{% for p in section_pages %}
+										<li{% if p.url == page.url %} class="selected"{% endif %}>
+											<a href="{{ p.url | relative_url | uri_escape }}">{{ p.title | escape }}</a>
+										</li>
+									{% endfor %}
+									</ul>
+									
+									{% if site.theme-settings.navigation.collapsible == true %}</details>{% endif %}
+								{% endif %}
+							{% endfor %}
+						</div>
+					{% endfor %}
+					
+					{% include hooks/navbar-posthook.html %}
+				</div>
+				{% endfor %}
+			</div>
 		{% endif %}
-		{% assign chapter_pages = pages | where: "chapter", index.chapter %}
-		{% for p in chapter_pages %}
-			<li{% if p.url == page.url %} class="selected"{% endif %}><a href="{{ p.url | relative_url | uri_escape }}">{{ p.title | escape }}</a></li>
-		{% endfor %}
-		</ul>
-		
-		{% if site.theme-settings.navigation.collapsible == true %}</details>{% endif %}
-		
-	{% endfor %}
-	
-	{% include hooks/navbar-posthook.html %}
 	</div>
 </nav>

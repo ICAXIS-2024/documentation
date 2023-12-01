@@ -65,7 +65,7 @@ header
 }
 
 header .logo {
-	height: $header-height - ($header-padding * 2);
+	height: $header-height - ($header-padding * 1);
 }
 
 header .navtoggle a, header .to-top a {

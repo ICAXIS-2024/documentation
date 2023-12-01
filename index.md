@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Demo Site Front Page
+title: Demo Site Front Page2
 ---
 
 This is the demo site for the [GitBook-inspired documentation theme for Jekyll](https://github.com/adamrehn/jekyll-theme-gitbook). You can find the source code for this demo site here: <https://github.com/adamrehn/jekyll-theme-gitbook-demo>.

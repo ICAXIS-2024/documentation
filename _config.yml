@@ -152,48 +152,10 @@ defaults:
       section: "Use Cases"
       secnum: 4
       layout: "default"
-     
-# Defaults for Portal
-  # - scope:
-  #     path: ""
-  #     type: "portal"
-  #   values:
-  #     layout: "default"  # Assuming you have a specific layout for portal pages
 
-
-  # - scope:
-  #     path: "_collections/*/documentation"
-  #     type: "portal"
-  #   values:
-  #     section: "Documentation"
-  #     secnum: 1
-  #     layout: "default"
-      # url: "https://www.google.com"
-      # description: "Google Search Engine"
-      # image: "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
-      # tags: ["search", "engine"]
-      # author: "FredFarah"
-
-  # - scope:
-  #     path: "_collections/*/*/tutorials"
-  #     type: "portal"
-  #   values:
-  #     section: "Tutorials"
-  #     layout: "default"
-  #     doc_order: 2
-
-  # - scope:
-  #     path: "_collections/*/*/how-tos"
-  #     type: "portal"
-  #   values:
-  #     section: "How-To's"
-  #     layout: "default"
-  #     doc_order: 3
-
-  # - scope:
-  #     path: "_collections/*/*/use-cases"
-  #     type: "portal"
-  #   values:
-  #     section: "Use Cases"
-  #     layout: "default"
-  #     doc_order: 4
+  - scope:
+      path: "_collections/*/"
+    values:
+      section: "root"
+      secnum: 5
+      layout: "default"

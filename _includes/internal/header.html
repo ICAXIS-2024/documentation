@@ -22,7 +22,7 @@
 		<header class="container-fluid">
 			<div class="row align-items-center w-100">
 				<!-- Logo and Toggle Icon on the Left -->
-				<div class="col-md-4 d-flex align-items-center">
+				<div class="col-4 d-flex align-items-center">
 					<span class="navtoggle mr-2">
 						<a data-toggle="collapse" href="#nav" role="button" aria-expanded="false" aria-controls="nav">
 							<span class="fas fa-fw {% if site.theme-settings.fontawesome.icons.nav %}{{ site.theme-settings.fontawesome.icons.nav | escape }}{% else %}fa-bars{% endif %}" title="Toggle navigation"></span>
@@ -34,14 +34,14 @@
 				</div>
 		
 				<!-- Search in the Middle -->
-				<div class="col-md-4 d-flex justify-content-center">
+				<div class="col-4 d-flex justify-content-center">
 					<div class="w-100">
 						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 					</div>
 				</div>
 		
 				<!-- Selects and Return to Top Icon on the Right -->
-				<div class="col-md-4 d-flex justify-content-end align-items-center">
+				<div class="col-4 d-flex justify-content-end align-items-center">
 					<div class="d-flex" style="width: 55%;">
 						<select class="form-select form-select-lg form-control mr-1" name="coSelect" id="coSelect">
 							{% for collection in site.collections %}

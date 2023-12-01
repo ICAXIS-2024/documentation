@@ -20,12 +20,6 @@
 						{% if site.theme-settings.navigation.collapsible == true %}
 							{% assign html_element = "summary" %}
 						{% endif %}
-
-						<!-- {% for pager in pages %}
-						{% if pager.root != null %}
-							{{pager | inspect}} <br>
-						{% endif %}
-						{% endfor %} -->
 						<div class="section-collection collection-{{collection.label}}" id=collection-{{tabs.slug}}-{{collection.label}} style="display: none;">
 							{% for index in indices %}
 								{% if index.section != 'Root' %}

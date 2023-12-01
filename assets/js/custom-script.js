@@ -44,27 +44,26 @@ $(document).ready(function() {
         console.error("Select element not found");
     }
 
-    var tabs = $('#nav-tab .nav-link');
+    // select all id startes with tab-
+    var tabs = $('[id^="tab-"]');
 
     tabs.each(function() {
-        $(this).click(function() {
-            // Remove active class from all tabs
-            tabs.removeClass('active');
+        // Remove active class from all tabs
+        tabs.removeClass('active');
 
-            // Hide all tab content
-            var contents = $('.tab-pane');
-            contents.removeClass('show active');
+        // Hide all tab content
+        var contents = $('.tab-pane');
+        contents.removeClass('show active');
 
-            // Add active class to clicked tab
-            $(this).addClass('active');
+        // Add active class to clicked tab
+        $(this).addClass('active');
 
-            // Show the corresponding tab content
-            var target = $($(this).attr('data-target'));
-            if (target.length) {
-                target.addClass('show active');
-                localStorage.setItem('collection-tab', target.attr('id'));
-            }
-        });
+        // Show the corresponding tab content
+        var target = $($(this).attr('data-target'));
+        if (target.length) {
+            target.addClass('show active');
+            localStorage.setItem('collection-tab', target.attr('id'));
+        }
     });
 
     var collectionTab = localStorage.getItem('collection-tab');

@@ -154,7 +154,7 @@ defaults:
       layout: "default"
 
   - scope:
-      path: "_collections/*/"
+      path: "_collections/*/*.md"
     values:
       section: "root"
       secnum: 5

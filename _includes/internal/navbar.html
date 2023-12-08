@@ -53,18 +53,35 @@
 								{% endif %}
 							{% endfor %}
 							<hr>
-							<ul>
 							{% assign section_pages = pages 
 								| where: "section", index.section 
 								| where_exp: "item", "item.section == 'root'"
 								| where_exp: "item", "item.tab == tabs.slug"
 							%}
+							{% if section_pages.size > 0 %}
+							<ul>
 							{% for p in section_pages %}
 								<li{% if p.url == page.url %} class="selected"{% endif %}>
 									<a href="{{ p.url | relative_url | uri_escape }}">{{ p.title | escape }}</a>
 								</li>
 							{% endfor %}
 							</ul>
+							{% endif %}
+							{% assign section_pages_comon = pages 
+								| where: "section", index.section 
+								| where_exp: "item", "item.section == 'root'"
+								| where_exp: "item", "item.tab == null"
+							%}
+							{% if section_pages_comon.size > 0 %}
+							<hr>
+							<ul>						
+							{% for p in section_pages_comon %}
+								<li{% if p.url == page.url %} class="selected"{% endif %}>
+									<a href="{{ p.url | relative_url | uri_escape }}">{{ p.title | escape }}</a>
+								</li>
+							{% endfor %}
+							</ul>
+							{% endif %}
 						</div>
 					{% endfor %}
 				</div>

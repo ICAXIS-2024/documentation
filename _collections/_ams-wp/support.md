@@ -1,9 +1,5 @@
 ---
-title: Support Page
-pagenum: 10
-secnum: 20
+title: Support
+pagenum: 1
 tab: developer
-layout: default
 ---
-
-No Name OK

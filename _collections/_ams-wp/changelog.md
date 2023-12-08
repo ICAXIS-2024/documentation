@@ -1,9 +1,8 @@
 ---
 title: Change Log
-pagenum: 10
-secnum: 20
-tab: developer
+pagenum: 0
+tab: user
 layout: default
 ---
 
-No Name OK PWP
+No Name OK

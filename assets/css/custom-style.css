@@ -1,5 +1,5 @@
 nav .inner {
-	padding-left: 0;
+  padding-left: 0;
 }
 .tab {
   overflow: hidden;
@@ -35,4 +35,44 @@ nav .inner {
   display: none;
   padding: 1px 1px;
   border-top: none;
+}
+
+/* Medium screens (tablets, etc.) */
+@media (max-width: 768px) {
+  .logo {
+    height: 40px !important;
+  }
+
+  .to-top-button {
+    padding: 2px !important;
+  }
+}
+
+@media (max-width: 425px) {
+  header .navtoggle a,
+  header .to-top a {
+    padding: 0.75rem !important;
+  }
+
+  .logo {
+    height: 32px !important;
+  }
+
+  .to-top {
+    padding: 1rem !important;
+  }
+
+  #coSelect {
+    display: none;
+  }
+
+  #userSelect {
+    display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  #searchInput {
+    display: none;
+  }
 }

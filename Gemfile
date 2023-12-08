@@ -10,3 +10,8 @@ gem "webrick"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # gem "jekyll-theme-gitbook"
+gem 'jekyll-feed'
+gem 'jekyll-readme-index'
+gem 'jemoji'
+gem 'webrick'
+gem 'jekyll-mentions'

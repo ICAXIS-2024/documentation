@@ -11,16 +11,37 @@ rss: RSS
 # remote_theme: ICAXIS-2024/documentation
 remote_theme: adamrehn/jekyll-theme-gitbook@v0.0.1
 
-
 markdown: kramdown
 kramdown:
-  input: GFM
+  auto_ids:               true
+  input:                  GFM
+  math_engine:            mathjax
+  smart_quotes:           lsquo,rsquo,ldquo,rdquo
+  toc_levels:             1..6
+  syntax_highlighter:     rouge
+  syntax_highlighter_opts:
+    guess_lang:           true
+
+syntax_highlighter_style: colorful
+
+markdown_ext:             markdown,mkdown,mkdn,mkd,md
+
 exclude: [".gitignore", "LICENSE", "README.md"]
+
+# Permalinks
+permalink: /:categories/:title/
+
 sass:
   style: compressed
 
 # Only needed for local development, will be enabled automatically by GitHub Pages
-plugins: ["jekyll-remote-theme"]
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-readme-index
+  - jemoji
+  - jekyll-mentions
+  
 
 # Theme settings
 theme-settings:
@@ -114,42 +135,42 @@ defaults:
 
 
   - scope:
-      path: "_collections/*/documentation"
-    values:
-      tab: "developer"
-      section: "Documentation"
-      secnum: 1
-      layout: "default"
-
-  - scope:
       path: "_collections/*/guides"
     values:
-      tab: "user"
-      section: "Guides"
+      tab: "developer"
+      section: "Getting Started"
       secnum: 1
       layout: "default"
 
   - scope:
-      path: "_collections/*/how-tos"
+      path: "_collections/*/development"
     values:
       tab: "developer"
-      section: "How-To's"
+      section: "Core Features"
       secnum: 2
       layout: "default"
 
   - scope:
-      path: "_collections/*/tutorials"
+      path: "_collections/*/deployment"
     values:
-      tab: "user"
-      section: "Tutorials"
+      tab: "developer"
+      section: "Deployment"
       secnum: 3
       layout: "default"
 
   - scope:
-      path: "_collections/*/use-cases"
+      path: "_collections/*/toolkit"
     values:
       tab: "developer"
-      section: "Use Cases"
+      section: "Toolkit"
+      secnum: 4
+      layout: "default"
+
+  - scope:
+      path: "_collections/*/global"
+    values:
+      tab: "developer"
+      section: "Globalization"
       secnum: 4
       layout: "default"
 

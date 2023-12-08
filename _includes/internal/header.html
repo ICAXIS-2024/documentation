@@ -32,12 +32,28 @@
 						<img class="logo" src="{% if site.theme-settings.logo %}{{ site.theme-settings.logo | uri_escape }}{% else %}{{ '/' | relative_url }}assets/images/code-logo-load.png{% endif %}" alt="{{ site.title | escape }}">
 					</a>
 				</div>
-		
+				<div class="book-header" role="navigation">
+                    <!-- Title -->
+                    <h1>
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                        <!-- {% if page.title %}
+                            <a href="." >{{ page.title | escape }}</a>
+                        {% else %}
+                            <a href="." >{{ site.title | escape }}</a>
+                        {% endif %} -->
+                    </h1>
+                </div>
+
 				<!-- Search in the Middle -->
 				<div class="col-4 d-flex justify-content-center">
-					<div class="w-100">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<div id="book-search-input" role="search" class="w-100">
+						<input class="form-control me-2" id="docs-search-input" type="search" placeholder="Search" aria-label="Search">
 					</div>
+
+					<!-- TODO : Check later on for small screens -->
+					<!-- <div id="book-search-input-link" role="search">
+						<a href="{{site.baseurl}}/assets/search.html">Click to Search</a>
+					</div> -->
 				</div>
 		
 				<!-- Selects and Return to Top Icon on the Right -->
@@ -70,7 +86,32 @@
 		
 		<div class="wrapper">
 			
+    		<div class="page-inner">
+        		{% if page.cover %}
+        		<img src="{{ page.cover }}"
+             		width="100%"
+             		height="{{ page.cover_height | default: '100%' }}"
+             		alt="{{ page.title | escape }}"
+             		style="object-fit: cover;"
+        		/>
+	    		{% endif %}
+
+			<div id="book-search-results">
+			</div>
+			<!-- TODO: Ui Corrections for Search Results -->
+			<!-- <div class="search-results">
+				<div class="has-results">
+					<h1 class="search-results-title">
+						<span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+					<ul class="search-results-list"></ul>
+				</div>
+				<div class="no-results">
+					<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+				</div>
+			</div> -->
+    	</div>
+
 			{% include internal/navbar.html %}
 			
-			<main>
+		<main>
 				
